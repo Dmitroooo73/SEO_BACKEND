@@ -26,7 +26,7 @@ _credentials_exc = HTTPException(
 )
 
 
-# ---------- пароли ----------
+# пароли
 
 def hash_password(password: str) -> str:
     return pwd_context.hash(password)
@@ -36,7 +36,7 @@ def verify_password(plain: str, hashed: str) -> bool:
     return pwd_context.verify(plain, hashed)
 
 
-# ---------- токены ----------
+# токены
 
 def create_access_token(email: str) -> str:
     expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
@@ -98,7 +98,7 @@ def revoke_refresh_token(db: Session, refresh_token: str) -> None:
         db.commit()
 
 
-# ---------- текущий пользователь ----------
+# текущий пользователь
 
 def get_current_user(
     token: str = Depends(oauth2_scheme),

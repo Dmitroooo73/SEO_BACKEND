@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from shared.database import engine, Base
-import shared.models  # noqa: F401  — регистрирует таблицы на Base.metadata
+import shared.models  # noqa: F401  регистрирует таблицы на Base.metadata
 from backend.config import FRONTEND_URL
 from backend.routers.auth import router as auth_router
 from backend.routers.audits import router as audits_router
@@ -13,7 +13,7 @@ from backend.routers.sites import router as sites_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # источник правды о схеме — модели; таблицы создаются при старте
+    # источник правды о схеме это модели, таблицы создаются при старте
     Base.metadata.create_all(bind=engine)
     yield
 

@@ -6,7 +6,7 @@ from shared.models import User, Site, Audit, Issue
 from backend.auth import hash_password, verify_password
 
 
-# ---------- Пользователи ----------
+# Пользователи
 
 def get_user_by_email(db: Session, email: str) -> User | None:
     return db.query(User).filter(User.email == email).first()
@@ -27,7 +27,7 @@ def authenticate_user(db: Session, email: str, password: str) -> User | None:
     return user
 
 
-# ---------- Сайты ----------
+# Сайты
 
 def get_or_create_site(db: Session, user: User, url: str) -> Site:
     """Находит сайт пользователя по URL или создаёт новый."""
@@ -72,7 +72,7 @@ def list_sites(db: Session, user: User) -> list[Site]:
     return sites
 
 
-# ---------- Аудиты ----------
+# Аудиты
 
 def create_audit(db: Session, site: Site) -> Audit:
     audit = Audit(site_id=site.id, status="pending")

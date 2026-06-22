@@ -4,7 +4,7 @@ from typing import List, Optional, Literal
 from pydantic import BaseModel, EmailStr, ConfigDict, field_validator
 
 
-# ---------- Auth ----------
+# Auth
 
 class UserCreate(BaseModel):
     email: EmailStr
@@ -35,7 +35,7 @@ class RefreshRequest(BaseModel):
     refresh_token: str
 
 
-# ---------- Issues / scores ----------
+# Issues / scores
 
 class IssueScoreOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
@@ -60,7 +60,7 @@ class IssueOut(BaseModel):
     scores: List[IssueScoreOut] = []
 
 
-# ---------- Audits ----------
+# Audits
 
 class AuditCreate(BaseModel):
     url: str
@@ -94,7 +94,7 @@ class AuditReport(AuditOut):
     issues: List[IssueOut] = []
 
 
-# ---------- Sites ----------
+# Sites
 
 class SiteOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
